@@ -2,9 +2,29 @@ import random
 
 CORES = ["A", "B", "C", "D"]
 
-def verificaCadeia(): pass
+'''def verificaCadeia(tabuleiro, linha1, coluna1, linha2, coluna2): 
+    #Verifica se a posição da gema 2 monta cadeia na posição da gema 1
+    gema1 = tabuleiro[linha1][coluna1]
+    gema2 = tabuleiro[linha2][coluna2]
+    if (gema2 == tabuleiro[linha1-1][coluna1-1]):'''
 
-def permutaPosicao(): pass
+
+def permutaPosicao(tabuleiro, linha1, coluna1, linha2, coluna2):
+    #Verifica se a permutação é possível
+    if (linha1 == linha2+1 or linha2 == linha1+1 or linha1 == linha2):
+        if (coluna1 == coluna2+1 or coluna2 == coluna1+1 or coluna1 == coluna2):
+            if (tabuleiro[linha1][coluna1] != tabuleiro[linha2][coluna2]):
+                if True: #verificaCadeia(tabuleiro, linha1, coluna1, linha2, coluna2):
+                    buffer = tabuleiro[linha1][coluna1]
+                    tabuleiro[linha1][coluna1] = tabuleiro[linha2][coluna2]
+                    tabuleiro[linha2][coluna2] = buffer
+                    print("Permutado")
+                    return True
+                #permuta
+    print("Não foi possível permutar")
+    return False
+        
+
 
 def destroiGemas(): pass
 
@@ -41,14 +61,13 @@ def main():
         colunas = int(input("Número de colunas (menor ou igual a 10): "))
         linhas = int(input("Número de linhas (menor ou igual a 10): "))
     tabuleiro = [[0 for i in range(colunas)] for j in range(linhas)]
-    primeiraExibixao(tabuleiro, linhas, colunas)
-    exibeTabuleiro(tabuleiro)
-    print()
-    tabuleiro[3][2] = 0
-    exibeTabuleiro(tabuleiro)
-    print()
     caiGemas(tabuleiro, linhas, colunas)
     exibeTabuleiro(tabuleiro)
+    print()
+    permutaPosicao(tabuleiro, 1, 1, 2, 1)
+    exibeTabuleiro(tabuleiro)
+    #primeiraExibixao(tabuleiro, linhas, colunas)
+
 
 
 main()
