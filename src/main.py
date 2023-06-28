@@ -4,11 +4,10 @@ CORES = ["A", "B", "C", "D"]
 
 def destroiGema(tabuleiro, posicaoLinha, posicaoColuna): 
     tabuleiro[posicaoLinha][posicaoColuna] = 0
-    #print(tabuleiro, "\n")
-    #print("em destroi gema")
 
-#Função percorre todas as gemas e verifica suas adjacências.
-def verificaCadeia(tabuleiro, linhas, colunas): 
+#Função percorre todas as gemas, verifica suas adjacências e remove as cadeias.
+#Dá para refatorar!!!!!
+def verificaCadeia(pontuacao, tabuleiro, linhas, colunas): 
     for i in range(linhas):
         for j in range(colunas):
             gemasIguaisVerticais = gemasIguaisHorizontais = 1 #A gema atual é igual a ela mesma
@@ -29,9 +28,12 @@ def verificaCadeia(tabuleiro, linhas, colunas):
                 aux += 1
             #Verifica pontuação das gemas iguais verticais e destrói gemas
             if (gemasIguaisVerticais >= 3):
-                for i in range(len(posicoesGemasVerticais)):
-                    destroiGema(tabuleiro, posicoesGemasVerticais[i][0], posicoesGemasVerticais[i][1])
-                ##############caiGemas(tabuleiro, linhas, colunas)
+                exibeTabuleiro(tabuleiro)
+                for m in range(len(posicoesGemasVerticais)):
+                    destroiGema(tabuleiro, posicoesGemasVerticais[m][0], posicoesGemasVerticais[m][1])
+                    pontuacao += 1
+                exibeTabuleiro(tabuleiro)
+                caiGemas(tabuleiro, linhas, colunas)
             #Verifica gema do lado esquerdo da gema atual
             aux = j
             while (aux > 0 and tabuleiro[i][aux-1] == gemaAtual):
@@ -45,9 +47,13 @@ def verificaCadeia(tabuleiro, linhas, colunas):
                 posicoesGemasHorizontais.append((i, aux+1))
                 aux += 1
             if (gemasIguaisHorizontais >= 3):
-                for i in range(len(posicoesGemasHorizontais)):
-                    destroiGema(tabuleiro, posicoesGemasHorizontais[i][0], posicoesGemasHorizontais[i][1])
-                ##############caiGemas(tabuleiro, linhas, colunas)
+                exibeTabuleiro(tabuleiro)
+                for m in range(len(posicoesGemasHorizontais)):
+                    destroiGema(tabuleiro, posicoesGemasHorizontais[m][0], posicoesGemasHorizontais[m][1])
+                    pontuacao += 1
+                exibeTabuleiro(tabuleiro)
+                caiGemas(tabuleiro, linhas, colunas)
+    return pontuacao
 
 def permutaPosicao(tabuleiro, linha1, coluna1, linha2, coluna2):
     #Verifica se a permutação é possível
@@ -62,13 +68,6 @@ def permutaPosicao(tabuleiro, linha1, coluna1, linha2, coluna2):
                     return True
     print("Não foi possível permutar")
     return False
-
-def primeiraExibixao(tabuleiro, linhas, colunas):
-    #Percorre tabulerio
-    for i in range(linhas):
-        for j in range(colunas):
-            if tabuleiro[i][j] == 0:
-                tabuleiro[i][j] = random.choice(CORES)
 
 def caiGemas(tabuleiro, linhas, colunas):
     for i in range(linhas):
@@ -86,24 +85,21 @@ def exibeTabuleiro(tabuleiro):
         for colunas in linhas:
             print(colunas, " ", end='')
         print()
+    print()
 
 def exibeDica(): pass
 
 def main():
     colunas = 4#int(input("Número de colunas: "))
     linhas = 4#int(input("Número de linhas: "))
+    pontuacao = 0
     while (colunas > 10 or linhas > 10):
         colunas = int(input("Número de colunas (menor ou igual a 10): "))
         linhas = int(input("Número de linhas (menor ou igual a 10): "))
     tabuleiro = [[0 for i in range(colunas)] for j in range(linhas)]
     caiGemas(tabuleiro, linhas, colunas)
+    pontuacao = verificaCadeia(pontuacao, tabuleiro, linhas, colunas)
     exibeTabuleiro(tabuleiro)
-    print()
-    exibeTabuleiro(tabuleiro)
-    print()
-    verificaCadeia(tabuleiro, linhas, colunas)
-    exibeTabuleiro(tabuleiro)
-    print()
-    #primeiraExibixao(tabuleiro, linhas, colunas)
+    print(pontuacao)
 
 main()
