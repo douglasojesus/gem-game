@@ -1,4 +1,5 @@
 from GameFunctions import *
+import View
 
 def main():
     pontuacao = {"jogador1": 0}
@@ -9,17 +10,6 @@ def main():
         linhas = int(input("Número de linhas (menor ou igual a 10): "))
     tabuleiro = [[0 for i in range(colunas)] for j in range(linhas)]
     caiGemas(tabuleiro, linhas, colunas)
-    exibeTabuleiro(tabuleiro)
-    verificaCadeia(pontuacao, tabuleiro, linhas, colunas)
-    exibeTabuleiro(tabuleiro)
-    print(pontuacao)
-    print("indo pra permuta")
-    linha1 = int(input())
-    coluna1 = int(input())
-    linha2 = int(input())
-    coluna2 = int(input())
-    permutaPosicao(pontuacao, tabuleiro, linha1, coluna1, linha2, coluna2, linhas, colunas)
-    exibeTabuleiro
-    print(pontuacao)
+    View.play()
 
 main()
