@@ -10,6 +10,7 @@ def main():
         linhas = int(input("Número de linhas (menor ou igual a 10): "))
     tabuleiro = [[0 for i in range(colunas)] for j in range(linhas)]
     caiGemas(tabuleiro, linhas, colunas)
-    View.play()
+    exibeTabuleiro(tabuleiro)
+    View.play(tabuleiro, colunas, linhas)
 
 main()
