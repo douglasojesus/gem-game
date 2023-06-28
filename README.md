@@ -26,5 +26,7 @@ $ git clone https://github.com/douglasojesus/gem-game
 Rode o arquivo Main.py e utilize o jogo!
 
 🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧
+
 🚧🚧🚧🚧em construção🚧🚧🚧🚧
+
 🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧
