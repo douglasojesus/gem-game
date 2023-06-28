@@ -11,3 +11,20 @@ O jogo termina quando não existem permutações que geram cadeias.
 
 Tabuleiro e gemas
 O tabuleiro deve ser representado por uma matriz m x n de strings, onde m e n são fornecidos pelo usuário. Cada tipo (cor) de gema é representado por uma letra maiúscula distinta, utilizando-se das c primeiras letras do alfabeto em caixa alta (A, B, C, …). Você pode assumir que o número de colunas e linhas é no máximo 10.
+
+Ferramentas:
+🔧Python
+🔧Pygame
+🔧Visual Studio Code
+
+Padrões de commit utilizados: https://github.com/rafatosta/padroes-de-commits
+
+Para clonar este repositório:
+
+$ git clone https://github.com/douglasojesus/gem-game
+
+Rode o arquivo Main.py e utilize o jogo!
+
+🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧
+🚧🚧🚧🚧em construção🚧🚧🚧🚧
+🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧
