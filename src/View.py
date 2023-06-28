@@ -1,4 +1,6 @@
 import pygame
+import time
+from GameFunctions import *
 
 pygame.init()
 
@@ -44,10 +46,10 @@ def draw_gem_table(tabuleiro, TABLE_COLS, TABLE_ROWS, cell_width, cell_height):
         margemVertical += 40
         margemHorizontal = 40
 
-def play(tabuleiro, TABLE_COLS, TABLE_ROWS):
+def play(pontuacao, tabuleiro, colunas, linhas):
     # Calcula as dimensões das células da tabela
-    cell_width = (SCREEN_WIDTH-100) // TABLE_COLS
-    cell_height = (SCREEN_HEIGHT-100) // TABLE_ROWS
+    cell_width = (SCREEN_WIDTH-100) // colunas
+    cell_height = (SCREEN_HEIGHT-100) // linhas
     spaceNotPressed = True
     while True:
         for event in pygame.event.get():
@@ -61,7 +63,9 @@ def play(tabuleiro, TABLE_COLS, TABLE_ROWS):
         if spaceNotPressed:
             drawText(screen, "O jogo vai começar! Aperte a tecla espaço.", FONT, (0, 0, 0), 20, 20)
         else:
-            draw_gem_table(tabuleiro, TABLE_COLS, TABLE_ROWS, cell_width, cell_height)
+            draw_gem_table(tabuleiro, colunas, linhas, cell_width, cell_height)
+            drawText(screen, "Pontuação: " + str(pontuacao["jogador1"]), FONT, (0, 0, 0), 20, 350)
+        verificaCadeia(pontuacao, tabuleiro, linhas, colunas)
         pygame.display.flip()
         CLOCK.tick(FPS)
         pygame.display.update()
