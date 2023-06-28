@@ -33,6 +33,7 @@ def destroiGemasHorizontais(pontuacao, gemasIguaisHorizontais, tabuleiro, posico
 #Dá para refatorar!!!!!
 def verificaCadeia(pontuacao, tabuleiro, linhas, colunas): 
     continuaVerificacaoDeCadeia = True
+    #O tabuleiro vai continuar sendo verificado até não haver mais destruição de gemas
     while continuaVerificacaoDeCadeia:
         print("tal rodada")
         continuaVerificacaoDeCadeia = False
